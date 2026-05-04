@@ -154,3 +154,11 @@
   padding: 8px;
   border-radius: 50px;
 }
+
+
+.show-added-pop-up{
+
+    opacity: 1;
+    transition: all 0.3s linear;
+
+}

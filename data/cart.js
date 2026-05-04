@@ -15,7 +15,7 @@ if(!cart){
     ];
 }
 
-export function addToCart(productId) {
+export function addToCart(productId , quantity) {
 
 
     let matchingItem;
@@ -26,14 +26,14 @@ export function addToCart(productId) {
     });
 
     if (matchingItem) {
-        matchingItem.quantity += 1;
+        matchingItem.quantity += quantity;
     } else {
 
 
         cart.push(
             {
                 productId,
-                quantity: 1,
+                quantity,
             }
         );
     }
