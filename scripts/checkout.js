@@ -1,7 +1,7 @@
-import {cart, dltFromCart} from '../data/cart.js';
+import {cart, dltFromCart , calculateCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formateCurrency} from './utils/money.js';
-
+import  {updateCartQuantity} from './amazon.js';
 let orderSummary = ``;
 
 cart.forEach((cartItem)=>{
@@ -115,5 +115,20 @@ link.addEventListener('click',()=>{
    dltFromCart(productId); 
     const container = document.querySelector(`.js-cart-item-container-${productId}`);
     container.remove();
+    updateCheckout(calculateCartQuantity);
 });
 });
+
+    updateCheckout(calculateCartQuantity);
+
+function updateCheckout(getCartQuantity){
+
+const totalCartQuantity = getCartQuantity(cart);
+const checkoutNumber = document.getElementById("js-checkout-items-number");
+    if(checkoutNumber){
+
+        checkoutNumber.innerHTML =   `${totalCartQuantity} Items`;
+
+    }
+}
+
