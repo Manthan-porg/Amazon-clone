@@ -81,3 +81,19 @@ export function calculateCartQuantity(cart){
     return cartQuantity;
 
 }
+
+
+export function updateDeliveryId(productId , deliveryOptionId){
+
+let matchingItem;
+    cart.forEach((cartItem) => {
+        if (productId === cartItem.productId) {
+            matchingItem = cartItem;
+        }
+    });
+
+    matchingItem.deliveryOptionId = deliveryOptionId;
+
+    saveToStorage();
+
+}
