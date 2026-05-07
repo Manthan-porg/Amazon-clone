@@ -200,6 +200,7 @@ export function renderOrderSummary(){
 
 
             updateCheckout(calculateCartQuantity);
+            renderPaymentSummary();
         });
 
     });
