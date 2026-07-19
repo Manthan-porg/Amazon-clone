@@ -1,13 +1,8 @@
 function Cart(localStorageKey) {
 
-
-
     const cart = {
 
         cartItems: undefined,
-
-
-
 
         loadFromStorage() {
 
@@ -52,19 +47,11 @@ function Cart(localStorageKey) {
 
         },
 
-
-
         saveToStorage() {
-
-
 
             localStorage.setItem(localStorageKey, JSON.stringify(this.cartItems));
 
-
-
         },
-
-
 
         addToCart(productId, quantity) {
 
