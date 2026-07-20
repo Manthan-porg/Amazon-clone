@@ -111,3 +111,21 @@ export function updateCartQuantity(cart) {
     }
 
 }
+
+
+export function loadCart(fun) {
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.addEventListener('load', () => {
+        xhr.response;
+    });
+
+    console.log('load cart');
+    fun();
+
+    xhr.open('GET', 'https://supersimplebackend.dev/cart');
+    xhr.send();
+
+
+}
