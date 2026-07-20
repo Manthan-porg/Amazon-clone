@@ -1,6 +1,6 @@
 export let cart = JSON.parse(localStorage.getItem('cart'));
 
-if(!cart){
+if (!cart) {
 
     cart = [
         {
@@ -10,14 +10,14 @@ if(!cart){
         },
         {
 
-            productId : '15b6fc6f-327a-4ec4-896f-486349e85a3d',
+            productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
             quantity: 1,
-            deliveryOptionId:'2fc'
-        }, 
+            deliveryOptionId: '2fc'
+        },
     ];
 }
 
-export function addToCart(productId , quantity) {
+export function addToCart(productId, quantity) {
 
 
     let matchingItem;
@@ -44,26 +44,26 @@ export function addToCart(productId , quantity) {
 
 }
 
-function saveToStorage(){
+function saveToStorage() {
 
-    localStorage.setItem('cart',JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart));
 
 }
 
-export function dltFromCart(productId){
+export function dltFromCart(productId) {
 
     let newCart = [];
 
-    cart.forEach((cartItem)=>{
+    cart.forEach((cartItem) => {
 
-        if(cartItem.productId !== productId){
+        if (cartItem.productId !== productId) {
 
             newCart.push(cartItem);
 
         }
 
 
-    } );
+    });
 
     cart = newCart;
 
@@ -72,20 +72,20 @@ export function dltFromCart(productId){
 
 
 
-export function calculateCartQuantity(cart){
-    
-        let cartQuantity = 0;
-        cart.forEach((cartItem) => {
-            cartQuantity += cartItem.quantity;
-        });
+export function calculateCartQuantity(cart) {
+
+    let cartQuantity = 0;
+    cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity;
+    });
     return cartQuantity;
 
 }
 
 
-export function updateDeliveryId(productId , deliveryOptionId){
+export function updateDeliveryId(productId, deliveryOptionId) {
 
-let matchingItem;
+    let matchingItem;
     cart.forEach((cartItem) => {
         if (productId === cartItem.productId) {
             matchingItem = cartItem;
@@ -95,5 +95,19 @@ let matchingItem;
     matchingItem.deliveryOptionId = deliveryOptionId;
 
     saveToStorage();
+
+}
+
+export function updateCartQuantity(cart) {
+
+    const totalCartQuantity = calculateCartQuantity(cart);
+
+
+    const cartElement = document.querySelector('.js-cart-quantity');
+    if (cartElement) {
+
+        cartElement.innerHTML = totalCartQuantity;
+
+    }
 
 }
