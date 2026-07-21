@@ -113,19 +113,11 @@ export function updateCartQuantity(cart) {
 }
 
 
-export function loadCart(fun) {
+export async function loadCart() {
 
-    const xhr = new XMLHttpRequest();
+    const response = await fetch('https://supersimplebackend.dev/cart');
+    const text = await response.text();
 
-    xhr.addEventListener('load', () => {
-        xhr.response;
-    });
-
-    console.log('load cart');
-    fun();
-
-    xhr.open('GET', 'https://supersimplebackend.dev/cart');
-    xhr.send();
-
+    console.log(text);
 
 }
