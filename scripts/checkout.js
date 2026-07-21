@@ -20,6 +20,7 @@ async function loadFunction() {
         renderPaymentSummary();
 
 
+
     } catch (error) {
         console.log(`unexpected error: ${error} `);
     }
