@@ -11,12 +11,19 @@ loadProductsFetch().then(() => {
 });
 */
 async function loadFunction() {
+    try {
 
-    await loadProductsFetch();
-    await loadCart();
+        await loadProductsFetch();
+        await loadCart();
 
-    renderOrderSummary();
-    renderPaymentSummary();
+        renderOrderSummary();
+        renderPaymentSummary();
+
+
+    } catch (error) {
+        console.log(`unexpected error: ${error} `);
+    }
+
 }
 
 loadFunction();
