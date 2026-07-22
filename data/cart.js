@@ -36,7 +36,7 @@ export function addToCart(productId, quantity) {
             {
                 productId,
                 quantity,
-                deliveryOptionId: '1fc'
+                deliveryOptionId: '1'
             }
         );
     }

@@ -14,17 +14,28 @@ function saveToStorage() {
   localStorage.setItem('orders', JSON.stringify(orders));
 }
 
+
+
+
 export function renderOrders() {
+
+  if (orders.length === 0) {
+    document.getElementById("js-orders-grid").innerHTML =
+      "<h2>No orders yet.</h2>";
+    return;
+  }
 
   let ordersHTML = "";
   orders.forEach((order) => {
 
-    // console.log(order.id);
-
     let productHTML = "";
-    order.products.forEach((orderProduct) => {
-      // console.log(getProduct(orderProduct.productId));
+    (order.products || []).forEach((orderProduct) => {
       const product = getProduct(orderProduct.productId);
+
+      if (!product) {
+        return;
+      }
+
       productHTML += `
             
           <div class="product-image-container">
@@ -49,7 +60,7 @@ export function renderOrders() {
           </div>
 
           <div class="product-actions">
-            <a href="tracking.html">
+            <a href="tracking.html?orderId=${order.id}&productId=${orderProduct.productId}">
               <button class="track-package-button button-secondary">
                 Track package
               </button>

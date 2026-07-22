@@ -2,7 +2,7 @@ export const deliveryOptions = [
 
     {
 
-        id: '1fc',
+        id: '1',
         deliveryDays: 7,
         priceCents: 0
 
@@ -10,7 +10,7 @@ export const deliveryOptions = [
 
     {
 
-        id: '2fc',
+        id: '2',
         deliveryDays: 3,
         priceCents: 499
 
@@ -18,7 +18,7 @@ export const deliveryOptions = [
 
     {
 
-        id: '3fc',
+        id: '3',
         deliveryDays: 1,
         priceCents: 999
 
@@ -26,14 +26,14 @@ export const deliveryOptions = [
 
 ];
 
-export function getDeliveryOption(deliveryOptionId){
+export function getDeliveryOption(deliveryOptionId) {
 
 
     let deliveryOption;
 
-    deliveryOptions.forEach((option)=>{
+    deliveryOptions.forEach((option) => {
 
-        if(String(option.id) === String(deliveryOptionId)){
+        if (String(option.id) === String(deliveryOptionId)) {
             deliveryOption = option;
         }
 

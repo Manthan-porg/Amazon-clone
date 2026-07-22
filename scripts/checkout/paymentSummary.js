@@ -80,10 +80,16 @@ export function renderPaymentSummary() {
         }
 
       );
+
       const order = await response.json();
+
+      if (!order || !Array.isArray(order.products)) {
+        throw new Error('Order response from server was missing a valid products list.');
+      }
+
       addOrders(order);
-      renderOrders();
       window.location.href = "orders.html";
+
     } catch (error) {
       console.log(`unexpected error. Try again : ${error}`);
     }
